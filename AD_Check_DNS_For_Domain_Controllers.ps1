@@ -1,13 +1,19 @@
-﻿# Simple Script To Monitor DNS for DC Entries
-# This script was created because we are not using AD DNS, had issue prior with DNS dropping for a DC
-# This will monitor to make sure you have the correct number of records in DNS for the DCs
-# I run this script on our scripting server every 15 minutes
-# Make sure the DCs stay in XX.YYYY.ZZZ DNS
+﻿############################################################################################################
+# Script to monitor external DNS for DC records
+# Written By: Paul Arquette
+# Last Modified: May 23, 2021
+# Last Modified For: Github
+#
+# NOTES:
+# The purpose of this script was to our external DNS servers for Domain Controller records.
+# Since we don't run DNS and had an issue in the past with DC records disappearing I wrote a script
+# to monitor DNS to see if we ever lost any of the DC records.  I run this every 15 minutes from our 
+# scripting server.
 ############################################################################################################
 
 ############################################################################################################
 # DEFINE VARIABLES
-############################################################################################################
+####################
 $dnsdomainname = "" #ad.site.com
 $IPHosts = @('10.0.0.0','10.0.0.1') #Add as many DCs as you want to monitor
 
@@ -16,10 +22,11 @@ $EmailTo = "" #Add multiple people comma seperated "email1@domain.com","email2@d
 $emailSubject = "Domain Controller DNS Objects Missing!"
 $EmailServer = ""
 ############################################################################################################
+
 $ADHosts = Resolve-DnsName $dnsdomainname
 $MissingHosts = @()
 
-if ($ADHosts.Count -ne $IPHosts.Count)
+if ($ADHosts.Count -lt $IPHosts.Count)
 {
     ForEach ($ip in $IPHosts)
     {      
@@ -36,17 +43,15 @@ if ($ADHosts.Count -ne $IPHosts.Count)
 if($MissingHosts)
 {
     Write-Host $MissingHosts
-
-    #Send E-mail 
-        $date = Get-Date
-        Write-Host "Sending Email"
-        $emailBody = "
-        The Following DCs Are NOT in $dnsdomainname (DNS) <br />
-        ========================================================
+    $date = Get-Date
+    Write-Host "Sending Email"
+    $emailBody = "
+    The Following DCs Are NOT in $dnsdomainname (DNS) <br />
+    ========================================================
 <br />
 "
-        $emailBody += $MissingHosts -join "<br />" |Out-String
-        $emailBody +="<br /><br />This message was automatically generated at $date"    
-        
-        Send-MailMessage -From $EmailFrom -To $EmailTo -Subject $emailSubject -Body $emailBody -BodyAsHtml -SmtpServer $EmailServer
+    $emailBody += $MissingHosts -join "<br />" |Out-String
+    $emailBody +="<br /><br />This message was automatically generated at $date"    
+    
+    Send-MailMessage -From $EmailFrom -To $EmailTo -Subject $emailSubject -Body $emailBody -BodyAsHtml -SmtpServer $EmailServer
 }
