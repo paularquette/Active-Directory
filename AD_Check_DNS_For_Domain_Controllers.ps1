@@ -5,7 +5,7 @@
 # Last Modified For: Github
 #
 # NOTES:
-# The purpose of this script was to our external DNS servers for Domain Controller records.
+# The purpose of this script was to monitor our external DNS servers for Domain Controller records.
 # Since we don't run DNS and had an issue in the past with DC records disappearing I wrote a script
 # to monitor DNS to see if we ever lost any of the DC records.  I run this every 15 minutes from our 
 # scripting server.
