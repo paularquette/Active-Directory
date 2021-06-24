@@ -27,7 +27,7 @@ $NewDomainSuffix = "@domain.com"
 
 #Grab User Attributes That Need Changed
 ######################################################
-$ADUserInfo = Get-ADUser -Filter * -SearchBase $OUPath -Properties * |Select-Object displayName,userPrincipalName,proxyAddresses,mail,mailNickname,extensionAttribute15,samAccountName
+$ADUserInfo = Get-ADUser -Filter * -SearchBase $OUPath -SearchScope OneLevel -Properties * |Select-Object displayName,userPrincipalName,proxyAddresses,mail,mailNickname,extensionAttribute15,samAccountName
 
 #ForEach User Object Check Fields and Make Changes
 ######################################################
