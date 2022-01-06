@@ -102,7 +102,6 @@ if ($outgoingNonHttp)
         Write-Host "Sending Email"
         $emailResponse = $outgoingNonHttp |Select-Object Server,Date,Time,Protocol,SrcIP,SrcPort,DstIP,DstPort |ConvertTo-Html -Head $style
         $emailBody ="Domain Controller Blocked OUTGOING NON HTTP-HTTPS <br /> $emailResponse"
-        $emailTo = Get-GroupEmail -Groups en_Role_PSEmail_EC-VM
         $emailSubject = "Domain Controller Blocked OUTGOING NON HTTP-HTTPS"
         Send-MailMessage -From $EmailFrom -To $EmailTo -Subject $emailSubject -Body $emailBody -BodyAsHtml -SmtpServer $EmailServer
 }
