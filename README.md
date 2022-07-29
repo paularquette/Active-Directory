@@ -8,4 +8,4 @@ These are the scripts that I use to help maintain Active Directory environments 
 
 ## Change AD User Attributes by OU
 - This was a script that I wrote in order to make sure all properties on user objects were filled out to sync the user objects up to Azure AD
-- [https://github.com/paularquette/Active-Directory/blob/6610f06e222cfccd91b1d2dff6b86a0abbde9b03/AD_Change_User_Account_Properties_ByOU.ps1](https://github.com/paularquette/Active-Directory/blob/main/AD_Change_User_Account_Properties_ByOU.ps1)
+- [Change AD User Attributes by OU Location](https://github.com/paularquette/Active-Directory/blob/main/AD_Change_User_Account_Properties_ByOU.ps1)
