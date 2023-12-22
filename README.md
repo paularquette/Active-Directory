@@ -25,3 +25,7 @@ These are the scripts that I use to help maintain Active Directory environments 
 ## Check ExtensionAttributes For Use
 - This script was written to check all of the extensionAttributes 1-15 on Users, Computers, and Groups to see if they are in use.
 - [Check AD Extension Attributes](https://github.com/paularquette/Active-Directory/blob/main/AD_Check_ExtensionAttributes.ps1)
+
+## PowerShell E-mail Report Template
+- This script was written as a template that can be used to kick out quick PowerShell reports via E-mail and have it be legiable.
+- [E-mail Report Template](https://github.com/paularquette/Active-Directory/blob/main/Email_Report_Template)
