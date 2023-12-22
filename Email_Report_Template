@@ -89,7 +89,10 @@ function WriteLog
 #$From = "<from>@domain.com"
 #$To = "<to>@domain.com"
 #$Subject = "<Subject Goes Here>"
-#$Body = ""
+#$Body = @"
+#<b>Header of Data</b>
+#$emailResponse
+#"@
 #$SMTPServer = "smtp.domain.com"
 #$SMTPPort = "25"
 #Send-MailMessage -From $From -to $To -Subject $Subject -Body $Body -BodyAsHtml -SmtpServer $SMTPServer -Port $SMTPPort
