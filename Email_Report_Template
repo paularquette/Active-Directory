@@ -23,7 +23,6 @@ $style = $style + "TABLE{border: 1px solid black; border-collapse: collapse;}"
 $style = $style + "TH{border: 1px solid black; background: #dddddd; padding: 5px; }"
 $style = $style + "TD{border: 1px solid black; padding: 5px; }"
 $style = $style + "</style>"
-# $staging = $staging |Select-Object Name,Created |ConvertTo-Html -Head $style
 #####################################################################################
 
 
