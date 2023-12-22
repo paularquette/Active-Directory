@@ -1,0 +1,96 @@
+#################################################
+# Paul Arquette
+# Standardized Powershell Script Template v1.0
+#
+# Script Creator:
+# <put creator here>
+#
+# Script Purpose:
+# <put purpose here>
+#
+# Date Created:
+# <put created date here>
+#
+# Date Last Modified:
+# <put last modified date here>
+#################################################
+
+
+## HTML STYLING
+####################################################################################
+$style = "<style>BODY{font-family: Arial; font-size: 10pt;}"
+$style = $style + "TABLE{border: 1px solid black; border-collapse: collapse;}"
+$style = $style + "TH{border: 1px solid black; background: #dddddd; padding: 5px; }"
+$style = $style + "TD{border: 1px solid black; padding: 5px; }"
+$style = $style + "</style>"
+# $staging = $staging |Select-Object Name,Created |ConvertTo-Html -Head $style
+#####################################################################################
+
+
+# Parameters
+#################################################
+
+#If the script takes parameters put them here
+#
+# EXAMPLE:
+#[cmdletbinding()]
+#    param (
+#        [Parameter(Mandatory=$True,
+#                   HelpMessage="Which Environment to Reboot -Testing or -Production")]
+#        [string]$Environment,                                #NOTE: notice comma here
+#        [Parameter(Mandatory=$True,
+#                   HelpMessage="Enter Server Name")]
+#        [string]$ServerName                                 #NOTE: comma after all input values EXCEPT the last
+#        )
+#
+
+
+# Logging - Set Log File Location
+#################################################
+$datestyle = Get-Date -Format "yyyy-MM-dd"
+$Logfile = "C:\<PATH>-$datestyle.log"
+
+
+# Set Global Variables & Input Files
+#################################################
+
+# EXAMPLE:
+# $inputfile = Import-CSV C:\Temp\input.csv
+#
+# $Var1 = "This"
+# $Var2 = "ThisThat"
+# $Var3 = @()
+
+# Functions - Declare Functions
+#################################################
+
+function WriteLog
+{
+    Param ([string]$LogString)
+    $Stamp = (Get-Date).toString("yyyy/MM/dd HH:mm:ss")
+    $LogMessage = "$Stamp $LogString"
+    Add-content $LogFile -value $LogMessage
+}
+
+# <Enter Additional Functions Here>
+
+
+#################################################
+# Start Script Programming Here
+#################################################
+#$Var3 += New-Object PSObject -Property @{FirstThing="ThingOne";SecondThing="ThingTwo"}
+
+
+
+
+# Send Out E-mail if Necessary
+#################################################
+#$emailResponse = $Var3 |Select-Object FirstThing,SecondThing |Sort-Object FirstThing |Convert-To-Html -Head $style
+
+#$From = "<from>@domain.com"
+#$To = "<to>@domain.com"
+#$Subject = "<Subject Goes Here>"
+#$Body = ""
+#$SMTPServer = "smtp.domain.com"
+#$SMTPPort = "25"
+#Send-MailMessage -From $From -to $To -Subject $Subject -Body $Body -BodyAsHtml -SmtpServer $SMTPServer -Port $SMTPPort
